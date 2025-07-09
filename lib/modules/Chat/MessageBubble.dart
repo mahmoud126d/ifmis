@@ -3,7 +3,6 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,9 +12,12 @@ import '../../providers/chat provider.dart';
 import '../../providers/user provider.dart';
 import '../../shared/Components.dart';
 import '../../shared/Style.dart';
+import '../profile/profile.dart';
 import '../show image/show image.dart';
 import 'package:http/http.dart' as http;
 import 'package:share_plus/share_plus.dart';
+
+import '../show video/show video.dart';
 
 class MessageBubble extends StatelessWidget {
   final bool isMe;
@@ -78,24 +80,23 @@ class MessageBubble extends StatelessWidget {
                           var temp = await getTemporaryDirectory();
                           var path = '${temp.path}/image.jpg';
                           File(path).writeAsBytesSync(bytes);
-                          await Share.shareFiles([path],
-                              text: messageModel.image);
+                          await Share.shareXFiles([XFile(path)], text: messageModel.image);
                         },
                         child: Icon(Icons.share, color: primaryColor),
                       ),
                       SizedBox(height: sizeFromHeight(context, 30)),
                       InkWell(
-                        onTap: () async {
-                          await GallerySaver.saveImage(messageModel.image,
-                                  albumName: 'صور الإتحاد الدولى')
-                              .then((value) {
-                            if (value!) {
-                              showToast(
-                                  text: 'تم حفظ الصورة بنجاح',
-                                  state: ToastStates.SUCCESS);
-                            }
-                          });
-                        },
+                        // onTap: () async {
+                        //   await GallerySaver.saveImage(messageModel.image,
+                        //           albumName: 'صور الإتحاد الدولى')
+                        //       .then((value) {
+                        //     if (value!) {
+                        //       showToast(
+                        //           text: 'تم حفظ الصورة بنجاح',
+                        //           state: ToastStates.SUCCESS);
+                        //     }
+                        //   });
+                        // },
                         child: Icon(Icons.download, color: primaryColor),
                       ),
                     ],
@@ -148,24 +149,23 @@ class MessageBubble extends StatelessWidget {
                           var temp = await getTemporaryDirectory();
                           var path = '${temp.path}/image.jpg';
                           File(path).writeAsBytesSync(bytes);
-                          await Share.shareFiles([path],
-                              text: messageModel.image);
+                          await Share.shareXFiles([XFile(path)], text: messageModel.image);
                         },
                         child: Icon(Icons.share, color: primaryColor),
                       ),
                       SizedBox(height: sizeFromHeight(context, 30)),
                       InkWell(
-                        onTap: () async {
-                          await GallerySaver.saveImage(messageModel.image,
-                                  albumName: 'صور الإتحاد الدولى')
-                              .then((value) {
-                            if (value!) {
-                              showToast(
-                                  text: 'تم حفظ الصورة بنجاح',
-                                  state: ToastStates.SUCCESS);
-                            }
-                          });
-                        },
+                        // onTap: () async {
+                        //   await GallerySaver.saveImage(messageModel.image,
+                        //           albumName: 'صور الإتحاد الدولى')
+                        //       .then((value) {
+                        //     if (value!) {
+                        //       showToast(
+                        //           text: 'تم حفظ الصورة بنجاح',
+                        //           state: ToastStates.SUCCESS);
+                        //     }
+                        //   });
+                        // },
                         child: Icon(Icons.download, color: primaryColor),
                       ),
                     ],
@@ -566,17 +566,17 @@ class MessageBubble extends StatelessWidget {
                       ),
                       SizedBox(height: sizeFromHeight(context, 30)),
                       InkWell(
-                        onTap: () async {
-                          await GallerySaver.saveVideo(messageModel.video,
-                                  albumName: 'فيديوهات الإتحاد الدولى')
-                              .then((value) {
-                            if (value!) {
-                              showToast(
-                                  text: language ? 'Video Saved' : 'تم حفظ الفيديو بنجاح',
-                                  state: ToastStates.SUCCESS);
-                            }
-                          });
-                        },
+                        // onTap: () async {
+                        //   await GallerySaver.saveVideo(messageModel.video,
+                        //           albumName: 'فيديوهات الإتحاد الدولى')
+                        //       .then((value) {
+                        //     if (value!) {
+                        //       showToast(
+                        //           text: language ? 'Video Saved' : 'تم حفظ الفيديو بنجاح',
+                        //           state: ToastStates.SUCCESS);
+                        //     }
+                        //   });
+                        // },
                         child: Icon(Icons.download, color: primaryColor),
                       ),
                     ],
@@ -626,17 +626,17 @@ class MessageBubble extends StatelessWidget {
                       ),
                       SizedBox(height: sizeFromHeight(context, 30)),
                       InkWell(
-                        onTap: () async {
-                          await GallerySaver.saveVideo(messageModel.video,
-                                  albumName: 'فيديوهات الإتحاد الدولى')
-                              .then((value) {
-                            if (value!) {
-                              showToast(
-                                  text: language ? 'Video Saved' : 'تم حفظ الفيديو بنجاح',
-                                  state: ToastStates.SUCCESS);
-                            }
-                          });
-                        },
+                        // onTap: () async {
+                        //   await GallerySaver.saveVideo(messageModel.video,
+                        //           albumName: 'فيديوهات الإتحاد الدولى')
+                        //       .then((value) {
+                        //     if (value!) {
+                        //       showToast(
+                        //           text: language ? 'Video Saved' : 'تم حفظ الفيديو بنجاح',
+                        //           state: ToastStates.SUCCESS);
+                        //     }
+                        //   });
+                        // },
                         child: Icon(Icons.download, color: primaryColor),
                       ),
                     ],

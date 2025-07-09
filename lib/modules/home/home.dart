@@ -164,11 +164,7 @@ class _HomeState extends State<Home> {
         ),
         body: UpgradeAlert(
           upgrader: Upgrader(
-            canDismissDialog: true,
             durationUntilAlertAgain: const Duration(days: 1),
-            dialogStyle: Platform.isAndroid
-                ? UpgradeDialogStyle.material
-                : UpgradeDialogStyle.cupertino,
           ),
           child: Column(
             children: [

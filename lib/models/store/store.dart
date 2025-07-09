@@ -85,7 +85,6 @@ class StoreCategory {
   late int id;
   late LanguageModel name;
   late String image;
-
   StoreCategory({
     required this.id,
     required this.name,

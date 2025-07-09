@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifmis/modules/play_store/show%20store.dart';
 import 'package:provider/provider.dart';
+import '../../models/language/language.dart';
 import '../../models/store/store.dart';
 import '../../network/cash_helper.dart';
 import '../../providers/other provider.dart';
@@ -50,7 +51,11 @@ class _PlayStoreState extends State<PlayStore> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            navigateAndFinish(context, const StoreCategory());
+            navigateAndFinish(context,  StoreCategory(
+              id: 1,
+              name: LanguageModel(en: 'Football', ar: 'كرة القدم'),
+              image: 'https://example.com/img.jpg',
+            ),);
           },
           icon: Icon(
             Icons.arrow_back,
