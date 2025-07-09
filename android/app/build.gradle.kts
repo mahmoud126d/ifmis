@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "dev.ifmis.news.ifmis"
-    compileSdk = flutter.compileSdkVersion
+    //compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = "27.0.12077973"  // Use the required NDK version
 
     compileOptions {
@@ -22,7 +23,8 @@ android {
     defaultConfig {
         applicationId = "dev.ifmis.news.ifmis"
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        //targetSdk = flutter.targetSdkVersion
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
