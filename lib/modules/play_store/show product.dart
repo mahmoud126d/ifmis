@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:wc_flutter_share/wc_flutter_share.dart';
+//import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../models/store/product.dart';
 import '../../network/cash_helper.dart';
@@ -15,7 +15,7 @@ import '../../providers/store provider.dart';
 import '../../shared/Components.dart';
 import '../../shared/Style.dart';
 import 'add comment.dart';
-
+import 'package:share_plus/share_plus.dart';
 class ShowProduct extends StatefulWidget {
   ProductModel productModel;
 
@@ -77,18 +77,14 @@ class _ShowProductState extends State<ShowProduct> {
                 IconButton(
                   onPressed: () {
                     if (Platform.isIOS) {
-                      WcFlutterShare.share(
-                        sharePopupTitle: 'مشاركة',
-                        mimeType: 'text/plain',
-                        text:
-                            'https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361',
+                      Share.share(
+                        'https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361',
+                        subject: 'مشاركة',
                       );
                     } else {
-                      WcFlutterShare.share(
-                        sharePopupTitle: 'مشاركة',
-                        mimeType: 'text/plain',
-                        text:
-                            'https://play.google.com/store/apps/details?id=dev.ifmis.news',
+                      Share.share(
+                        'https://play.google.com/store/apps/details?id=dev.ifmis.news',
+                        subject: 'مشاركة',
                       );
                     }
                   },

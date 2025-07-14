@@ -1,4 +1,4 @@
-package dev.ifmis.news.ifmis
+package com.example.ifms
 
 import io.flutter.embedding.android.FlutterActivity
 

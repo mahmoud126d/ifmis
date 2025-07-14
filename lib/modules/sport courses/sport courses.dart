@@ -5,8 +5,8 @@ import 'package:ifmis/modules/sport%20courses/sport%20categories.dart';
 import 'package:ifmis/modules/sport%20courses/sport%20course%20details.dart';
 import 'package:ifmis/modules/sport%20courses/success%20in%20course.dart';
 import 'package:provider/provider.dart';
-import 'package:wc_flutter_share/wc_flutter_share.dart';
-
+//import 'package:wc_flutter_share/wc_flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../network/cash_helper.dart';
 import '../../providers/other provider.dart';
 import '../../providers/sport courses provider.dart';
@@ -146,14 +146,19 @@ class _SportCoursesState extends State<SportCourses> {
                               ),
                               IconButton(
                                 onPressed: () async {
-                                  WcFlutterShare.share(
-                                    sharePopupTitle: 'مشاركة',
-                                    mimeType: 'text/plain',
-                                    text:
-                                    'دورة ${sportCoursesProvider.courses[index].name} \n for iphone: https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361 \n for android: https://play.google.com/store/apps/details?id=dev.ifmis.news',
-                                  ).then((value) {
-                                    sportCoursesProvider.registerShared(
-                                        sportCoursesProvider.courses[index].id);
+                                  final course = sportCoursesProvider.courses[index];
+
+                                  final shareText = '''
+                                    دورة ${course.name}
+                                    for iPhone: https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361
+                                    for Android: https://play.google.com/store/apps/details?id=dev.ifmis.news
+                                    ''';
+
+                                  Share.share(
+                                    shareText,
+                                    subject: 'مشاركة',
+                                  ).then((_) {
+                                    sportCoursesProvider.registerShared(course.id);
                                   });
                                 },
                                 icon: Icon(Icons.share, color: white),

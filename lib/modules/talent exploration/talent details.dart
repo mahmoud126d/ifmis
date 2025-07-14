@@ -6,9 +6,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:ifmis/modules/talent%20exploration/talent%20add%20comment.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:wc_flutter_share/wc_flutter_share.dart';
+//import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
+import 'package:share_plus/share_plus.dart';
 import '../../models/talents/specific talent.dart';
 import '../../network/cash_helper.dart';
 import '../../providers/chat provider.dart';
@@ -282,19 +282,16 @@ class _TalentDetailsState extends State<TalentDetails> {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
-                                  if (Platform.isIOS) {
-                                    WcFlutterShare.share(
-                                      sharePopupTitle: 'مشاركة',
-                                      mimeType: 'text/plain',
-                                      text: '${'شارك معنا في منافسة استكشاف وتطوير المواهب في مختلف الألعاب الرياضية'} \n https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361',
-                                    );
-                                  } else {
-                                    WcFlutterShare.share(
-                                      sharePopupTitle: 'مشاركة',
-                                      mimeType: 'text/plain',
-                                      text: '${'شارك معنا في منافسة استكشاف وتطوير المواهب في مختلف الألعاب الرياضية'} \n https://play.google.com/store/apps/details?id=dev.ifmis.news',
-                                    );
-                                  }
+                                  const message = 'شارك معنا في منافسة استكشاف وتطوير المواهب في مختلف الألعاب الرياضية';
+                                  const iosLink = 'https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361';
+                                  const androidLink = 'https://play.google.com/store/apps/details?id=dev.ifmis.news';
+
+                                  final fullText = '$message\n${Platform.isIOS ? iosLink : androidLink}';
+
+                                  Share.share(
+                                    fullText,
+                                    subject: 'مشاركة',
+                                  );
                                 },
                                 child: Container(
                                   margin: const EdgeInsets.all(5),

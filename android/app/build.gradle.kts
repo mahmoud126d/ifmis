@@ -2,18 +2,18 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
+    //id("com.google.gms.google-services") // Firebase plugin
 }
 
 android {
-    namespace = "dev.ifmis.news.ifmis"
-    //compileSdk = flutter.compileSdkVersion
+    namespace = "com.example.ifms"
     compileSdk = 35
-    ndkVersion = "27.0.12077973"  // Use the required NDK version
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-        isCoreLibraryDesugaringEnabled = true  // Re-enable desugaring
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -21,12 +21,12 @@ android {
     }
 
     defaultConfig {
-        applicationId = "dev.ifmis.news.ifmis"
+        applicationId = "com.example.ifms"
         minSdk = flutter.minSdkVersion
-        //targetSdk = flutter.targetSdkVersion
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -42,4 +42,5 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    //implementation("androidx.multidex:multidex:2.0.1") // required if multiDex is enabled
 }

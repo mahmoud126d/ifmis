@@ -19,7 +19,8 @@ import '../../shared/const.dart';
 import '../Chat/chat.dart';
 import '../profile/profile.dart';
 import '../show image/show image.dart';
-import 'package:wc_flutter_share/wc_flutter_share.dart';
+//import 'package:wc_flutter_share/wc_flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ShowNewsSporeDetails extends StatefulWidget {
   SportServicesNewsModel sportServicesNewsModel;
@@ -343,21 +344,13 @@ class _ShowNewsSporeDetailsState extends State<ShowNewsSporeDetails> {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
-                                  if (Platform.isIOS) {
-                                    WcFlutterShare.share(
-                                      sharePopupTitle: 'مشاركة',
-                                      mimeType: 'text/plain',
-                                      text:
-                                          'https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361',
-                                    );
-                                  } else {
-                                    WcFlutterShare.share(
-                                      sharePopupTitle: 'مشاركة',
-                                      mimeType: 'text/plain',
-                                      text:
-                                          'https://play.google.com/store/apps/details?id=dev.ifmis.news',
-                                    );
-                                  }
+                                  final iosLink = 'https://apps.apple.com/app/%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-ifmis/id1670802361';
+                                  final androidLink = 'https://play.google.com/store/apps/details?id=dev.ifmis.news';
+
+                                  Share.share(
+                                    Platform.isIOS ? iosLink : androidLink,
+                                    subject: 'مشاركة',
+                                  );
                                 },
                                 child: Container(
                                   margin: const EdgeInsets.all(5),
